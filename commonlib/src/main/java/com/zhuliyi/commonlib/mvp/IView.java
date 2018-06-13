@@ -24,7 +24,7 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 
 /**
- * Despcription : 这里除了定义 {@link #handleMessage} 还可以定义一些比较常用,每个 {@link View} 都会用到的方法
+ * Despcription : 这里可以定义一些比较常用,每个 {@link View} 都会用到的方法
  *  因为 {@link View} 的实现类可能会是 {@link Activity}, {@link Fragment} 或者 {@link Dialog} 以及一些自定义 {@link View}
  *  所以不能定义一些某个类特有的方法比如 {@link Activity#startActivity(Intent)} 就是 {@link Activity} 特有的,其他 {@link View} 实现类并不一定具备这个功能
  * Author : Leory
@@ -48,12 +48,5 @@ public interface IView {
      * @param message 消息内容, 不能为 {@code null}
      */
     void showMessage(@NonNull String message);
-
-    /**
-     * 处理消息, 这里面和 {@link Handler} 的原理一样, 通过 {@code switch(what)}, 做不同的操作
-     *
-     * @param message {@link Message} 对象, 不能为 {@code null}
-     */
-    void handleMessage(@NonNull Message message);
 
 }

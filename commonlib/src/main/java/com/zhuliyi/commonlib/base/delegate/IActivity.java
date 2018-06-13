@@ -2,10 +2,12 @@ package com.zhuliyi.commonlib.base.delegate;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 
 import com.zhuliyi.commonlib.base.BaseFragment;
+import com.zhuliyi.commonlib.di.component.AppComponent;
 import com.zhuliyi.commonlib.mvp.IPresenter;
 
 
@@ -14,10 +16,10 @@ import com.zhuliyi.commonlib.mvp.IPresenter;
  * Author : Leory
  * Time : 2018-04-15
  */
-public interface IActivity<P extends IPresenter> {
+public interface IActivity {
 
 
-    boolean useEventBus();
+
 
     /**
      * 初始化 View, 如果 {@link #initView(Bundle)} 返回 0, 框架则不会调用 {@link Activity#setContentView(int)}
@@ -34,10 +36,12 @@ public interface IActivity<P extends IPresenter> {
      */
     void initData(@Nullable Bundle savedInstanceState);
 
-    @Nullable
-    P obtainPresenter();
 
-    void setPresenter(@Nullable P presenter);
+    /**
+     * 是否使用EventBus
+     * @return
+     */
+    boolean useEventBus();
 
     /**
      * 这个 Activity 是否会使用 Fragment,框架会根据这个属性判断是否注册 {@link FragmentManager.FragmentLifecycleCallbacks}

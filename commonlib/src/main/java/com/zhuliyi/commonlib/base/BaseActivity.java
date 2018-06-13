@@ -26,6 +26,8 @@ import android.view.View;
 import com.zhuliyi.commonlib.base.delegate.IActivity;
 import com.zhuliyi.commonlib.mvp.IPresenter;
 
+import javax.inject.Inject;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -33,6 +35,7 @@ import butterknife.Unbinder;
  * ================================================
  * 因为 Java 只能单继承,所以如果要用到需要继承特定 {@link Activity} 的三方库,那你就需要自己自定义 {@link Activity}
  * 继承于这个特定的 {@link Activity},然后再按照 {@link BaseActivity} 的格式,将代码复制过去,记住一定要实现{@link IActivity}
+ * 所有activity周期的实现类{@link com.zhuliyi.commonlib.base.delegate.ActivityLifecycleImpl}
  *
  * Created by JessYan on 22/03/2016
  * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
@@ -45,12 +48,13 @@ import butterknife.Unbinder;
  * Author : Leory
  * Time : 2018-04-15
  */
-public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivity implements IActivity<P> {
+public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivity implements IActivity {
     protected final String TAG = this.getClass().getSimpleName();
 
-    private Unbinder mUnbinder;
-    protected P mPresenter;
-
+    private Unbinder unbinder;
+    @Inject
+    @Nullable
+    protected P presenter;
 
 
     @Override
@@ -67,7 +71,7 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
             if (layoutResID != 0) {
                 setContentView(layoutResID);
                 //绑定到butterknife
-                mUnbinder = ButterKnife.bind(this);
+                unbinder = ButterKnife.bind(this);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -75,23 +79,16 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
         initData(savedInstanceState);
     }
 
-    @Override
-    public void setPresenter(@Nullable P presenter) {
-        this.mPresenter = presenter;
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        if (mPresenter == null) mPresenter = obtainPresenter();
-    }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (mUnbinder != null && mUnbinder != Unbinder.EMPTY) mUnbinder.unbind();
-        this.mPresenter = null;
-        this.mUnbinder = null;
+        if (unbinder != null && unbinder != Unbinder.EMPTY) unbinder.unbind();
+        if(presenter!=null){
+            presenter.onDestroy();
+        }
+        this.presenter = null;
+        this.unbinder = null;
     }
 
     /**

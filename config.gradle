@@ -1,0 +1,49 @@
+ext {
+    android = [
+            compileSdkVersion: 27,
+            minSdkVersion    : 15,
+            targetSdkVersion : 27,
+            versionCode      : 1,
+            versionName      : "1.0.0"
+    ]
+
+    version = [
+            supportVersion    : "27.1.0",
+            dagger2Version    : "2.15",
+            retorfitVersion   : "2.4.0",
+            glideVersion      : "4.6.1",
+            butterknifeVersion: "8.8.1"
+    ]
+
+    dependencies = [
+            //support
+            "appcompat-v7"                 : "com.android.support:appcompat-v7:${version["supportVersion"]}",
+            "constraint-layout"            : "com.android.support.constraint:constraint-layout:1.1.0",
+            "recyclerview-v7"              : "com.android.support:recyclerview-v7:${version["supportVersion"]}",
+            "annotations"                  : "com.android.support:support-annotations:${version["supportVersion"]}",
+
+            //net
+            "retrofit"                     : "com.squareup.retrofit2:retrofit:${version["retorfitVersion"]}",
+            "retrofit-converter-gson"      : "com.squareup.retrofit2:converter-gson:${version["retorfitVersion"]}",
+            "retrofit-adapter-rxjava2"     : "com.squareup.retrofit2:adapter-rxjava2:${version["retorfitVersion"]}",
+            "glide"                        : "com.github.bumptech.glide:glide:${version["glideVersion"]}",
+            "glide-compiler"               : "com.github.bumptech.glide:compiler:${version["glideVersion"]}",
+            //view
+            "BaseRecyclerViewAdapterHelper": "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30",
+            "butterknife"                  : "com.jakewharton:butterknife:${version["butterknifeVersion"]}",
+            "butterknife-compiler"         : "com.jakewharton:butterknife-compiler:${version["butterknifeVersion"]}",
+            //tools
+            "rxjava2"                      : "io.reactivex.rxjava2:rxjava:2.1.12",
+            "rxandroid2"                   : "io.reactivex.rxjava2:rxandroid:2.0.2",
+            "rxcache2"                     : "com.github.VictorAlbertos.RxCache:runtime:1.8.3-2.x",
+            "dagger2"                      : "com.google.dagger:dagger:${version["dagger2Version"]}",
+            "dagger2-compiler"             : "com.google.dagger:dagger-compiler:${version["dagger2Version"]}",
+            "androideventbus"              : "org.simple:androideventbus:1.0.5.1",
+            "gson"                         : "com.google.code.gson:gson:2.8.2",
+            //test
+            "testInstrumentationRunner"    : "android.support.test.runner.AndroidJUnitRunner",
+            "junit"                        : "junit:junit:4.12",
+            "runner"                       : "com.android.support.test:runner:1.0.1",
+            "espresso"                     : "com.android.support.test.espresso:espresso-core:3.0.1"
+    ]
+}
