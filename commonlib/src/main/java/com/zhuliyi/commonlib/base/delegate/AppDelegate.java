@@ -7,8 +7,8 @@ import android.support.annotation.NonNull;
 import com.zhuliyi.commonlib.di.component.AppComponent;
 import com.zhuliyi.commonlib.di.component.DaggerAppComponent;
 import com.zhuliyi.commonlib.di.module.GlobalConfigModule;
-import com.zhuliyi.commonlib.integration.ConfigModule;
-import com.zhuliyi.commonlib.integration.ManifestParser;
+import com.zhuliyi.commonlib.app.ConfigModule;
+import com.zhuliyi.commonlib.app.ManifestParser;
 
 import java.util.ArrayList;
 import java.util.List;

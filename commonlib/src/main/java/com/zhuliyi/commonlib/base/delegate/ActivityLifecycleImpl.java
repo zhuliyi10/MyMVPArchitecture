@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 
-import com.zhuliyi.commonlib.integration.AppManager;
+import com.zhuliyi.commonlib.app.AppManager;
 import com.zhuliyi.commonlib.utils.AppUtils;
 
 import org.simple.eventbus.EventBus;

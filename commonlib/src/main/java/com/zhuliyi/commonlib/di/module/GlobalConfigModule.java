@@ -5,13 +5,13 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
+import com.zhuliyi.commonlib.cache.Cache;
+import com.zhuliyi.commonlib.cache.CacheType;
+import com.zhuliyi.commonlib.cache.IntelligentCache;
+import com.zhuliyi.commonlib.cache.LruCache;
 import com.zhuliyi.commonlib.http.GlobalHttpHandler;
 import com.zhuliyi.commonlib.image.BaseImageLoaderStrategy;
 import com.zhuliyi.commonlib.image.glide.GlideImageLoaderStrategy;
-import com.zhuliyi.commonlib.integration.cache.Cache;
-import com.zhuliyi.commonlib.integration.cache.CacheType;
-import com.zhuliyi.commonlib.integration.cache.IntelligentCache;
-import com.zhuliyi.commonlib.integration.cache.LruCache;
 import com.zhuliyi.commonlib.utils.FileUtils;
 
 import java.io.File;

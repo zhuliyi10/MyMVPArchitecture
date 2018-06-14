@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MyMVPArchitecture.iml" filepath="$PROJECT_DIR$/MyMVPArchitecture.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business1/business1.iml" filepath="$PROJECT_DIR$/business1/business1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business2/business2.iml" filepath="$PROJECT_DIR$/business2/business2.iml" />
       <module fileurl="file://$PROJECT_DIR$/commonlib/commonlib.iml" filepath="$PROJECT_DIR$/commonlib/commonlib.iml" />
     </modules>
   </component>

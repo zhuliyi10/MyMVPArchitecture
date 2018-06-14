@@ -2,11 +2,10 @@ package com.zhuliyi.commonlib.base.delegate;
 
 import android.app.Application;
 import android.content.Context;
-import android.support.v4.app.FragmentManager;
 
 import com.zhuliyi.commonlib.di.module.GlobalConfigModule;
 import com.zhuliyi.commonlib.http.Api;
-import com.zhuliyi.commonlib.integration.ConfigModule;
+import com.zhuliyi.commonlib.app.ConfigModule;
 
 import java.util.List;
 

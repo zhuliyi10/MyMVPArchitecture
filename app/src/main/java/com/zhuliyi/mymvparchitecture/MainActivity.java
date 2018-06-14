@@ -2,23 +2,22 @@ package com.zhuliyi.mymvparchitecture;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.widget.ImageView;
+import android.view.View;
+import android.widget.Toast;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.zhulilyi.mymvparchitecture.R;
+import com.zhuliyi.commonlib.app.RouterHub;
 import com.zhuliyi.commonlib.base.BaseActivity;
-import com.zhuliyi.commonlib.image.ImageLoader;
-import com.zhuliyi.commonlib.image.glide.GlideConfig;
-import com.zhuliyi.commonlib.mvp.IPresenter;
 import com.zhuliyi.commonlib.utils.AppUtils;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
+@Route(path = RouterHub.APP_MAINACTIVITY)
 public class MainActivity extends BaseActivity {
 
-    @BindView(R.id.img)
-    ImageView img;
 
     @Override
     public int initView(@Nullable Bundle savedInstanceState) {
@@ -27,10 +26,21 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-        GlideConfig config=new GlideConfig.Builder()
-                .url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528864685635&di=5ea41bdc8923e7b587e7bc1a623bde05&imgtype=0&src=http%3A%2F%2Fwww.taopic.com%2Fuploads%2Fallimg%2F140320%2F235013-14032020515270.jpg")
-                .imageView(img)
-                .build();
-       AppUtils.obtainImageLoader(this).loadImage(this,config);
+
+    }
+
+
+    @OnClick({R.id.btn1, R.id.btn2})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.btn1:
+                AppUtils.navigation(this,RouterHub.BUSINESS1_BUSINESS1ACTIVITY);
+                Toast.makeText(this,"跳到组件1",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.btn2:
+                AppUtils.navigation(this,RouterHub.BUSINESS2_BUSINESS2ACTIVITY);
+                Toast.makeText(this,"跳到组件2",Toast.LENGTH_SHORT).show();
+                break;
+        }
     }
 }

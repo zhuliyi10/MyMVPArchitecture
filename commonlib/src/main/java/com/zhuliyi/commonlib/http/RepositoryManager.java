@@ -3,8 +3,8 @@ package com.zhuliyi.commonlib.http;
 import android.app.Application;
 import android.content.Context;
 
-import com.zhuliyi.commonlib.integration.cache.Cache;
-import com.zhuliyi.commonlib.integration.cache.CacheType;
+import com.zhuliyi.commonlib.cache.Cache;
+import com.zhuliyi.commonlib.cache.CacheType;
 import com.zhuliyi.commonlib.mvp.IModel;
 
 import javax.inject.Inject;

@@ -4,15 +4,17 @@ android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
 
 
-
     defaultConfig {
         minSdkVersion rootProject.ext.android["minSdkVersion"]
         targetSdkVersion rootProject.ext.android["targetSdkVersion"]
         versionCode rootProject.ext.android["versionCode"]
         versionName rootProject.ext.android["versionName"]
-
         testInstrumentationRunner rootProject.ext.android["testInstrumentationRunner"]
-
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
     }
 
     buildTypes {
@@ -50,10 +52,12 @@ dependencies {
     api rootProject.ext.dependencies["retrofit-adapter-rxjava2"]
     //glide
     api rootProject.ext.dependencies["glide"]
-    //gson
+    //gSon
     api rootProject.ext.dependencies["gson"]
     annotationProcessor rootProject.ext.dependencies["glide-compiler"]
-
+    //aRouter
+    api rootProject.ext.dependencies["arouter"]
+    annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
     //test
     testImplementation rootProject.ext.dependencies["junit"]
     androidTestImplementation rootProject.ext.dependencies["runner"]
