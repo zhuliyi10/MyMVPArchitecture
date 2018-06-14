@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.zhuliyi.commonlib.app.RouterHub;
 import com.zhuliyi.commonlib.base.BaseActivity;
 import com.zhuliyi.commonlib.image.glide.GlideConfig;
@@ -54,7 +55,11 @@ public class Business1Activity extends BaseActivity {
         if (i == R.id.btn1) {
             Toast.makeText(this, "点击了按键1", Toast.LENGTH_SHORT).show();
         } else if (i == R.id.btn2) {
-            Toast.makeText(this, "点击了按键2", Toast.LENGTH_SHORT).show();
+            ARouter.getInstance()
+                    .build(RouterHub.BUSINESS2_BUSINESS2ACTIVITY)
+                    .withString("key", "这是从组件1过来的数据")
+                    .navigation(this);
+            Toast.makeText(this, "跳到组件2", Toast.LENGTH_SHORT).show();
         }
     }
 }
