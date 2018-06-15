@@ -3,14 +3,14 @@ package com.zhuliyi.mymvparchitecture;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
-import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.zhulilyi.mymvparchitecture.R;
-import com.zhuliyi.commonlib.app.RouterHub;
 import com.zhuliyi.commonlib.base.BaseActivity;
 import com.zhuliyi.commonlib.utils.AppUtils;
+import com.zhuliyi.commonlib.utils.ToastUtils;
+import com.zhuliyi.interactions.RouterHub;
 
 import butterknife.OnClick;
 
@@ -34,14 +34,14 @@ public class MainActivity extends BaseActivity {
         switch (view.getId()) {
             case R.id.btn1:
                 AppUtils.navigation(this, RouterHub.BUSINESS1_BUSINESS1ACTIVITY);
-                Toast.makeText(this, "跳到组件1", Toast.LENGTH_SHORT).show();
+                ToastUtils.showShort("跳到组件1");
                 break;
             case R.id.btn2:
                 ARouter.getInstance()
                         .build(RouterHub.BUSINESS2_BUSINESS2ACTIVITY)
                         .withString("key", "这是从宿主专过来的数据")
                         .navigation(this);
-                Toast.makeText(this, "跳到组件2", Toast.LENGTH_SHORT).show();
+                ToastUtils.showShort("跳到组件2");
                 break;
         }
     }

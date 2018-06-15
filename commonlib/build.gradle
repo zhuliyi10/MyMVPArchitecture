@@ -18,7 +18,13 @@ android {
     }
 
     buildTypes {
+        debug{
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
         release {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -28,7 +34,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
+    api project(':interactions')
     api rootProject.ext.dependencies["appcompat-v7"]
     api rootProject.ext.dependencies["recyclerview-v7"]
     api rootProject.ext.dependencies["constraint-layout"]

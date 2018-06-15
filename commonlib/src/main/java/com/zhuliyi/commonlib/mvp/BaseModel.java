@@ -10,6 +10,7 @@ import com.zhuliyi.commonlib.http.IRepositoryManager;
 
 public class BaseModel implements IModel{
 
+    protected final String TAG=this.getClass().getSimpleName();
     protected IRepositoryManager repositoryManager;//用于管理网络请求层, 以及数据缓存层
     public BaseModel(IRepositoryManager repositoryManager){
         this.repositoryManager=repositoryManager;

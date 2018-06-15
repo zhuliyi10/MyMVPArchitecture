@@ -34,7 +34,7 @@ public class GlideConfiguration extends AppGlideModule{
     public static final int IMAGE_DISK_CACHE_MAX_SIZE = 100 * 1024 * 1024;//图片缓存文件最大值为100Mb
     @Override
     public void applyOptions(Context context, GlideBuilder builder) {
-        final AppComponent appComponent = AppUtils.obtainAppComponent(context);
+        final AppComponent appComponent = AppUtils.obtainAppComponent();
         builder.setDiskCache(new DiskCache.Factory() {
             @Override
             public DiskCache build() {
@@ -65,7 +65,7 @@ public class GlideConfiguration extends AppGlideModule{
     @Override
     public void registerComponents(Context context, Glide glide, Registry registry) {
         //Glide 默认使用 HttpURLConnection 做网络请求,在这切换成 Okhttp 请求
-        AppComponent appComponent = AppUtils.obtainAppComponent(context);
+        AppComponent appComponent = AppUtils.obtainAppComponent();
         registry.replace(GlideUrl.class, InputStream.class, new OkHttpUrlLoader.Factory(appComponent.okHttpClient()));
     }
 

@@ -29,7 +29,7 @@ public class ActivityLifecycleImpl implements Application.ActivityLifecycleCallb
     @Override
     public void onActivityCreated(Activity activity, Bundle bundle) {
         Log.d(TAG, activity.getClass().getSimpleName() + ":onActivityCreated");
-        AppUtils.obtainAppComponent(activity).inject(this);
+        AppUtils.obtainAppComponent().inject(this);
         appManager.addActivity(activity);
         if(activity instanceof  IActivity){
             iActivity= (IActivity) activity;

@@ -7,7 +7,8 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <application>
+    <application
+        android:name="com.zhuliyi.commonlib.base.BaseApplication">
         <meta-data
             android:name="com.zhuliyi.commonlib.base.delegate.GlobalConfiguration"
             android:value="ConfigModule"/>

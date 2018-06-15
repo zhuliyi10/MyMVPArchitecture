@@ -22,7 +22,7 @@ import java.util.List;
 public class AppDelegate implements AppLifecycle,App{
 
     private AppComponent appComponent;
-    private Application application;
+    private static Application application;
     private List<ConfigModule> modules;
     private List<AppLifecycle> appLifecycles = new ArrayList<>();
     private List<Application.ActivityLifecycleCallbacks>activityLifecycles=new ArrayList<>();
@@ -65,6 +65,7 @@ public class AppDelegate implements AppLifecycle,App{
 
     @Override
     public void onTerminate(@NonNull Application application) {
+        application=null;
         if(appLifecycles!=null){
             for (AppLifecycle lifecycle:appLifecycles){
                 lifecycle.onTerminate(application);
@@ -97,5 +98,13 @@ public class AppDelegate implements AppLifecycle,App{
     @Override
     public AppComponent getAppComponent() {
         return appComponent;
+    }
+
+    /**
+     * 获取application
+     * @return
+     */
+    public static Application getApplication(){
+        return application;
     }
 }

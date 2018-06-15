@@ -1,10 +1,12 @@
 package com.zhuliyi.commonlib.utils;
 
 import android.app.Activity;
+import android.app.Application;
 import android.content.Context;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.zhuliyi.commonlib.base.delegate.App;
+import com.zhuliyi.commonlib.base.delegate.AppDelegate;
 import com.zhuliyi.commonlib.di.component.AppComponent;
 import com.zhuliyi.commonlib.image.ImageLoader;
 
@@ -15,22 +17,24 @@ import com.zhuliyi.commonlib.image.ImageLoader;
  */
 
 public class AppUtils {
+
+    public static Application getApplication(){
+        return AppDelegate.getApplication();
+    }
     /**
      * 获取AppComponent
-     * @param context
      * @return
      */
-    public static AppComponent obtainAppComponent(Context context){
-        return ((App)context.getApplicationContext()).getAppComponent();
+    public static AppComponent obtainAppComponent(){
+        return ((App) getApplication()).getAppComponent();
     }
 
     /**
      * 加载图片
-     * @param context
      * @return
      */
-    public static ImageLoader obtainImageLoader(Context context){
-        return obtainAppComponent(context).imageLoader();
+    public static ImageLoader obtainImageLoader(){
+        return obtainAppComponent().imageLoader();
     }
 
     /**

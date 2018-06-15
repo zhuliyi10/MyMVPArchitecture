@@ -24,6 +24,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.SupportActivity;
 import android.view.View;
 
+import org.simple.eventbus.EventBus;
+
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
@@ -32,29 +34,33 @@ import io.reactivex.disposables.Disposable;
  * Author : Leory
  * Time : 2018-04-15
  */
-public class BasePresenter<M extends IModel,V extends IView> implements IPresenter {
+public class BasePresenter<M extends IModel, V extends IView> implements IPresenter {
     protected final String TAG = this.getClass().getSimpleName();
     protected CompositeDisposable compositeDisposable;
     protected M model;
 
     protected V rootView;
+
     public BasePresenter() {
-        this(null,null);
+        this(null, null);
     }
 
-    public BasePresenter(V rootView){
-        this(null,rootView);
+    public BasePresenter(V rootView) {
+        this(null, rootView);
     }
 
-    public BasePresenter(M model,V rootView) {
+    public BasePresenter(M model, V rootView) {
         this.model = model;
-        this.rootView=rootView;
+        this.rootView = rootView;
         onStart();
     }
 
 
     @Override
     public void onStart() {
+        if (useEventBus()) {//如果要使用 Eventbus 请将此方法返回 true
+            EventBus.getDefault().register(this);//注册 Eventbus
+        }
     }
 
     /**
@@ -62,7 +68,9 @@ public class BasePresenter<M extends IModel,V extends IView> implements IPresent
      */
     @Override
     public void onDestroy() {
-
+        if (useEventBus()) {//如果要使用 Eventbus 请将此方法返回 true
+            EventBus.getDefault().unregister(this);//解除注册 Eventbus
+        }
         unDispose();//解除订阅
         if (model != null)
             model.onDestroy();
@@ -79,6 +87,15 @@ public class BasePresenter<M extends IModel,V extends IView> implements IPresent
      */
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     void onDestroy(LifecycleOwner owner) {
+    }
+
+    /**
+     * 是否使用 {@link EventBus},默认为使用(true)，
+     *
+     * @return
+     */
+    public boolean useEventBus() {
+        return true;
     }
 
     /**
