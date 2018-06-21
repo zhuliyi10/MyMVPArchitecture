@@ -17,7 +17,6 @@ import butterknife.OnClick;
 @Route(path = RouterHub.APP_MAINACTIVITY)
 public class MainActivity extends BaseActivity {
 
-
     @Override
     public int initView(@Nullable Bundle savedInstanceState) {
         return R.layout.activity_main;
@@ -25,7 +24,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-
     }
 
 
@@ -45,4 +43,5 @@ public class MainActivity extends BaseActivity {
                 break;
         }
     }
+
 }

@@ -23,4 +23,5 @@
         android:layout_gravity="center"
         android:layout_marginTop="60dp"
         android:text="组件2" />
+
 </FrameLayout>
