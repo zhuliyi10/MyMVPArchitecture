@@ -10,6 +10,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.zhuliyi.commonlib.image.BaseImageLoaderStrategy;
+import com.zhuliyi.commonlib.image.BaseImageConfig;
 import com.zhuliyi.commonlib.image.ImageConfig;
 
 import io.reactivex.Observable;
@@ -20,14 +21,14 @@ import io.reactivex.schedulers.Schedulers;
 
 /**
  * Describe :  *此类只是简单的实现了 Glide 加载的策略,方便快速使用,但大部分情况会需要应对复杂的场景
- * 这时可自行实现 {@link BaseImageLoaderStrategy} 和 {@link ImageConfig} 替换现有策略
+ * 这时可自行实现 {@link BaseImageLoaderStrategy} 和 {@link BaseImageConfig} 替换现有策略
  * Author : zhuly
  * Date : 2018-06-12
  */
 
-public class GlideImageLoaderStrategy implements BaseImageLoaderStrategy<GlideConfig>, GlideAppliesOptions {
+public class GlideImageLoaderStrategy implements BaseImageLoaderStrategy<ImageConfig>, GlideAppliesOptions {
     @Override
-    public void loadImage(Context ctx, GlideConfig config) {
+    public void loadImage(Context ctx, ImageConfig config) {
         GlideRequests requests;
         requests = GlideArms.with(ctx);//如果context是activity则自动使用Activity的生命周期
         GlideRequest<Drawable> glideRequest = requests.load(config.getUrl());
@@ -87,7 +88,7 @@ public class GlideImageLoaderStrategy implements BaseImageLoaderStrategy<GlideCo
     }
 
     @Override
-    public void clear(final Context ctx, GlideConfig config) {
+    public void clear(final Context ctx, ImageConfig config) {
         if (config.getImageViews() != null && config.getImageViews().length > 0) {//取消在执行的任务并且释放资源
             for (ImageView imageView : config.getImageViews()) {
                 GlideArms.get(ctx).getRequestManagerRetriever().get(ctx).clear(imageView);

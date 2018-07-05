@@ -9,7 +9,7 @@ import android.content.Context;
  * Date : 2018-06-12
  */
 
-public interface BaseImageLoaderStrategy<T extends ImageConfig> {
+public interface BaseImageLoaderStrategy<T extends BaseImageConfig> {
     /**
      * 加载图片
      *

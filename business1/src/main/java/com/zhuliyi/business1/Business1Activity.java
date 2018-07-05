@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.zhuliyi.commonlib.base.BaseActivity;
-import com.zhuliyi.commonlib.image.glide.GlideConfig;
+import com.zhuliyi.commonlib.image.ImageConfig;
 import com.zhuliyi.commonlib.utils.AppUtils;
 import com.zhuliyi.commonlib.utils.LogUtils;
 import com.zhuliyi.commonlib.utils.ToastUtils;
@@ -45,7 +45,7 @@ public class Business1Activity extends BaseActivity {
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-        GlideConfig config = new GlideConfig.Builder()
+        ImageConfig config = new ImageConfig.Builder()
                 .url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528864685635&di=5ea41bdc8923e7b587e7bc1a623bde05&imgtype=0&src=http%3A%2F%2Fwww.taopic.com%2Fuploads%2Fallimg%2F140320%2F235013-14032020515270.jpg")
                 .imageView(img)
                 .build();

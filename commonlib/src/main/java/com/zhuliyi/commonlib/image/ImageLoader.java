@@ -27,7 +27,7 @@ public final class ImageLoader {
      * @param config
      * @param <T>
      */
-    public <T extends ImageConfig>void loadImage(Context context,T config){
+    public <T extends BaseImageConfig>void loadImage(Context context, T config){
         this.strategy.loadImage(context,config);
     }
 
@@ -37,7 +37,7 @@ public final class ImageLoader {
      * @param config
      * @param <T>
      */
-    public <T extends ImageConfig>void clear(Context context,T config){
+    public <T extends BaseImageConfig>void clear(Context context, T config){
         this.strategy.clear(context,config);
     }
 

@@ -32,17 +32,6 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
- * ================================================
- * 因为 Java 只能单继承,所以如果要用到需要继承特定 {@link Activity} 的三方库,那你就需要自己自定义 {@link Activity}
- * 继承于这个特定的 {@link Activity},然后再按照 {@link BaseActivity} 的格式,将代码复制过去,记住一定要实现{@link IActivity}
- * 所有activity周期的实现类{@link com.zhuliyi.commonlib.base.delegate.ActivityLifecycleImpl}
- *
- * Created by JessYan on 22/03/2016
- * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
- * <a href="https://github.com/JessYanCoding">Follow me</a>
- * ================================================
- */
-/**
  * Despcription : 因为 Java 只能单继承,所以如果要用到需要继承特定 {@link Activity} 的三方库,那你就需要自己自定义 {@link Activity}
  * 继承于这个特定的 {@link Activity},然后再按照 {@link BaseActivity} 的格式,将代码复制过去,记住一定要实现{@link IActivity}
  * Author : Leory
